@@ -1,0 +1,2396 @@
+{
+  "rooms": {
+    "town": {
+      "name": "Brightwater · Festival Square",
+      "theme": "town",
+      "description": "Two processions. Two routes. One celebration at a standstill.",
+      "objects": [
+        {
+          "id": "banner",
+          "name": "Festival banner",
+          "x": 350,
+          "y": 225,
+          "kind": "evidence",
+          "text": "A rising sun and two stitched oaks flank the eastern gate. The cloth is dated 1907.",
+          "need": []
+        },
+        {
+          "id": "foundation",
+          "name": "Monument foundation",
+          "x": 580,
+          "y": 330,
+          "kind": "evidence",
+          "text": "The old socket points east. Fresh tool scratches curve around the newer north-facing arrow.",
+          "need": []
+        },
+        {
+          "id": "aster",
+          "name": "Aster Finch",
+          "x": 450,
+          "y": 300,
+          "kind": "npc",
+          "sprite": "blue",
+          "text": "I stopped rehearsal before either group got hurt. We need a route people can trust. Visit Mira inside the coral-roofed cartography house.",
+          "gift": ""
+        },
+        {
+          "id": "varn",
+          "name": "Councilor Varn",
+          "x": 670,
+          "y": 280,
+          "kind": "npc",
+          "sprite": "blue",
+          "text": "I maintain the northern road. If you want a change, show how you will carry a crowd across that broken ford. The oldest route is not automatically the safest.",
+          "gift": ""
+        },
+        {
+          "id": "opening",
+          "name": "Turn the plaza arrow",
+          "x": 580,
+          "y": 355,
+          "kind": "puzzle",
+          "need": [
+            "atlas",
+            "banner",
+            "foundation"
+          ]
+        },
+        {
+          "id": "route",
+          "name": "Build the living route",
+          "x": 740,
+          "y": 350,
+          "kind": "puzzle",
+          "need": [
+            "ferry",
+            "habitat_route",
+            "markers",
+            "access_route",
+            "paper5"
+          ]
+        },
+        {
+          "id": "rest_town",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "cartography",
+          "x": 480,
+          "y": 154,
+          "spawn": [
+            480,
+            444
+          ],
+          "need": []
+        },
+        {
+          "to": "hall",
+          "x": 220,
+          "y": 176,
+          "spawn": [
+            480,
+            444
+          ],
+          "need": []
+        },
+        {
+          "to": "forest",
+          "x": 895,
+          "y": 270,
+          "spawn": [
+            70,
+            294
+          ],
+          "need": [
+            "opening",
+            "paper1"
+          ]
+        },
+        {
+          "to": "river",
+          "x": 480,
+          "y": 480,
+          "spawn": [
+            90,
+            304
+          ],
+          "need": [
+            "opening",
+            "paper1"
+          ]
+        },
+        {
+          "to": "mountain",
+          "x": 740,
+          "y": 95,
+          "spawn": [
+            90,
+            304
+          ],
+          "need": [
+            "route"
+          ]
+        }
+      ],
+      "hazards": []
+    },
+    "cartography": {
+      "name": "Vale Cartography",
+      "theme": "interior",
+      "description": "Mira keeps the sources close, and her conclusions in pencil.",
+      "objects": [
+        {
+          "id": "atlas",
+          "name": "The annotated atlas",
+          "x": 480,
+          "y": 240,
+          "kind": "evidence",
+          "text": "Northern road. Margin: Route updated from temporary survey copy. The map was published in 1912.",
+          "need": []
+        },
+        {
+          "id": "mira",
+          "name": "Mira Vale",
+          "x": 395,
+          "y": 270,
+          "kind": "npc",
+          "sprite": "purple",
+          "text": "Lay that old east-pointing banner beside this official northern map, marked 'temporary survey copy,' Liora. Compare their lines carefully and tell me what differences you find. The two processions each carry a piece of the story. Read the atlas margin, then compare the banner and the monument. An official map can faithfully copy a temporary source.",
+          "gift": ""
+        },
+        {
+          "id": "rest_cartography",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "town",
+          "x": 480,
+          "y": 420,
+          "spawn": [
+            480,
+            178
+          ],
+          "need": []
+        }
+      ],
+      "hazards": []
+    },
+    "hall": {
+      "name": "Finch Hall & Civic Archive",
+      "theme": "interior",
+      "description": "A public record can preserve a mistake as carefully as a truth.",
+      "objects": [
+        {
+          "id": "signs",
+          "name": "Sign painter’s receipt",
+          "x": 350,
+          "y": 230,
+          "kind": "evidence",
+          "text": "Remove temporary from the northern road signs; repaint the destination as warehouse road.",
+          "need": [
+            "coast"
+          ]
+        },
+        {
+          "id": "programs",
+          "name": "Festival programs",
+          "x": 620,
+          "y": 220,
+          "kind": "evidence",
+          "text": "1908: emergency detour. 1912: northern route. 1916: traditional northern road. Repetition slowly replaced qualification.",
+          "need": [
+            "coast"
+          ]
+        },
+        {
+          "id": "charter",
+          "name": "Varn maintenance charter",
+          "x": 480,
+          "y": 315,
+          "kind": "evidence",
+          "text": "The Varn family inherited upkeep of the northern road after its adoption. The charter does not establish involvement in the 1908 decision.",
+          "need": [
+            "coast"
+          ]
+        },
+        {
+          "id": "civic",
+          "name": "Ring the civic timeline",
+          "x": 740,
+          "y": 320,
+          "kind": "puzzle",
+          "need": [
+            "coast",
+            "signs",
+            "programs",
+            "charter"
+          ]
+        },
+        {
+          "id": "rest_hall",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "town",
+          "x": 480,
+          "y": 420,
+          "spawn": [
+            220,
+            200
+          ],
+          "need": []
+        }
+      ],
+      "hazards": []
+    },
+    "forest": {
+      "name": "Sunleaf · Twin Oaks",
+      "theme": "forest",
+      "description": "Fresh paint shines on an old trail. The bark remembers another line.",
+      "objects": [
+        {
+          "id": "stones",
+          "name": "Eastern boundary stones",
+          "x": 430,
+          "y": 210,
+          "kind": "evidence",
+          "text": "Three worn sun symbols line up between Brightwater and the twin oaks. Their cuts sit beneath recent paint.",
+          "need": []
+        },
+        {
+          "id": "notches",
+          "name": "Twin oak notches",
+          "x": 700,
+          "y": 235,
+          "kind": "evidence",
+          "text": "Beneath the paint, paired old cuts face the eastern boundary stones. The trees and song preserve the same line.",
+          "need": [
+            "staff"
+          ]
+        },
+        {
+          "id": "forest",
+          "name": "Align the boundary markers",
+          "x": 540,
+          "y": 300,
+          "kind": "puzzle",
+          "need": [
+            "stones",
+            "song",
+            "notches",
+            "staff"
+          ]
+        },
+        {
+          "id": "habitat_route",
+          "name": "Protect the grove route",
+          "x": 750,
+          "y": 355,
+          "kind": "puzzle",
+          "need": [
+            "civic",
+            "staff"
+          ]
+        },
+        {
+          "id": "rest_forest",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "town",
+          "x": 70,
+          "y": 270,
+          "spawn": [
+            895,
+            294
+          ],
+          "need": []
+        },
+        {
+          "to": "lodge",
+          "x": 230,
+          "y": 150,
+          "spawn": [
+            480,
+            444
+          ],
+          "need": []
+        },
+        {
+          "to": "river",
+          "x": 850,
+          "y": 410,
+          "spawn": [
+            90,
+            144
+          ],
+          "need": []
+        },
+        {
+          "to": "ruins",
+          "x": 850,
+          "y": 150,
+          "spawn": [
+            90,
+            294
+          ],
+          "need": [
+            "forest",
+            "river"
+          ]
+        },
+        {
+          "to": "under",
+          "x": 640,
+          "y": 410,
+          "spawn": [
+            140,
+            424
+          ],
+          "need": [
+            "lens",
+            "line"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "lodge": {
+      "name": "Ranger Lodge",
+      "theme": "interior",
+      "description": "Orin has been listening to this forest longer than most maps have existed.",
+      "objects": [
+        {
+          "id": "song",
+          "name": "Procession song",
+          "x": 480,
+          "y": 235,
+          "kind": "evidence",
+          "text": "Through the twin crowns, toward the dawn; past the river, to the public shore. The verse is preserved on an old shelter board.",
+          "need": []
+        },
+        {
+          "id": "orin",
+          "name": "Orin Moss",
+          "x": 390,
+          "y": 280,
+          "kind": "npc",
+          "sprite": "green",
+          "text": "Recent paint is easy to see; old cuts take patience. The lodge song, boundary stones, and bark should be compared. Take this Wayfinder staff. Use Space to clear loose branches and gently turn away creatures.",
+          "gift": "staff"
+        },
+        {
+          "id": "rest_lodge",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "forest",
+          "x": 480,
+          "y": 420,
+          "spawn": [
+            230,
+            174
+          ],
+          "need": []
+        }
+      ],
+      "hazards": []
+    },
+    "river": {
+      "name": "Silverrun · Reedbank",
+      "theme": "river",
+      "description": "Water changed the road. It did not erase the reasons.",
+      "objects": [
+        {
+          "id": "log",
+          "name": "Ferryman’s log",
+          "x": 440,
+          "y": 180,
+          "kind": "evidence",
+          "text": "1908: The river rose beyond the chapel mark. The stone ford broke. Travelers were sent north until repairs could make a crossing safe.",
+          "need": []
+        },
+        {
+          "id": "receipt",
+          "name": "Northern bridge receipt",
+          "x": 700,
+          "y": 340,
+          "kind": "evidence",
+          "text": "Emergency northern access: timber and labor purchased after the 1908 flood.",
+          "need": []
+        },
+        {
+          "id": "survey",
+          "name": "Broken ford survey",
+          "x": 570,
+          "y": 280,
+          "kind": "evidence",
+          "text": "The ford stones remain undermined. Even at low water, a crowded procession would be unsafe.",
+          "need": []
+        },
+        {
+          "id": "tavi",
+          "name": "Tavi Reed",
+          "x": 320,
+          "y": 300,
+          "kind": "npc",
+          "sprite": "red",
+          "text": "That ford is still broken. Read the log and receipt before judging the detour. In the sluice house, leave one channel for the reeds and two for the ferry. Take my river line.",
+          "gift": "line"
+        },
+        {
+          "id": "river",
+          "name": "Rebuild the flood sequence",
+          "x": 300,
+          "y": 375,
+          "kind": "puzzle",
+          "need": [
+            "log",
+            "receipt",
+            "survey",
+            "sluice"
+          ]
+        },
+        {
+          "id": "ferry",
+          "name": "Test the public ferry",
+          "x": 800,
+          "y": 375,
+          "kind": "puzzle",
+          "need": [
+            "civic",
+            "sluice",
+            "line"
+          ]
+        },
+        {
+          "id": "rest_river",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "town",
+          "x": 90,
+          "y": 280,
+          "spawn": [
+            480,
+            504
+          ],
+          "need": []
+        },
+        {
+          "to": "forest",
+          "x": 90,
+          "y": 120,
+          "spawn": [
+            850,
+            434
+          ],
+          "need": []
+        },
+        {
+          "to": "sluice",
+          "x": 250,
+          "y": 145,
+          "spawn": [
+            480,
+            444
+          ],
+          "need": []
+        },
+        {
+          "to": "ruins",
+          "x": 880,
+          "y": 270,
+          "spawn": [
+            90,
+            434
+          ],
+          "need": [
+            "sluice",
+            "forest",
+            "river"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "sluice": {
+      "name": "Sluice House",
+      "theme": "ruins",
+      "description": "Three channels share one river: the mill, the ferry, and the nesting reeds.",
+      "objects": [
+        {
+          "id": "sluice",
+          "name": "Balance the sluice",
+          "x": 480,
+          "y": 250,
+          "kind": "puzzle",
+          "need": [
+            "line"
+          ]
+        },
+        {
+          "id": "rest_sluice",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "river",
+          "x": 480,
+          "y": 420,
+          "spawn": [
+            250,
+            169
+          ],
+          "need": []
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "pulse"
+        }
+      ]
+    },
+    "ruins": {
+      "name": "Mosaic Terrace",
+      "theme": "ruins",
+      "description": "Some tiles are older than the story they now tell.",
+      "objects": [
+        {
+          "id": "tracing",
+          "name": "Atlas tracing sheet",
+          "x": 700,
+          "y": 310,
+          "kind": "evidence",
+          "text": "A tracing overlays the tablet’s northern line and reproduces its double notch. It bears the atlas workshop seal.",
+          "need": [
+            "lens"
+          ]
+        },
+        {
+          "id": "sela",
+          "name": "Sela Marr",
+          "x": 370,
+          "y": 275,
+          "kind": "npc",
+          "sprite": "purple",
+          "text": "This lens shows repairs beneath the glaze. In the Hall of Copies, turn each map toward its source: first survey, then tablet, then atlas. Leave unsupported parts blank.",
+          "gift": "lens"
+        },
+        {
+          "id": "markers",
+          "name": "Authenticate the route markers",
+          "x": 560,
+          "y": 355,
+          "kind": "puzzle",
+          "need": [
+            "civic",
+            "lens"
+          ]
+        },
+        {
+          "id": "rest_ruins",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "forest",
+          "x": 90,
+          "y": 270,
+          "spawn": [
+            850,
+            174
+          ],
+          "need": []
+        },
+        {
+          "to": "river",
+          "x": 90,
+          "y": 410,
+          "spawn": [
+            880,
+            294
+          ],
+          "need": []
+        },
+        {
+          "to": "copies",
+          "x": 480,
+          "y": 145,
+          "spawn": [
+            480,
+            444
+          ],
+          "need": [
+            "lens"
+          ]
+        },
+        {
+          "to": "coast",
+          "x": 880,
+          "y": 270,
+          "spawn": [
+            90,
+            294
+          ],
+          "need": [
+            "copies",
+            "guardian",
+            "paper4"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "pulse"
+        }
+      ]
+    },
+    "copies": {
+      "name": "Hall of Copies",
+      "theme": "ruins",
+      "description": "Every map faces its source. One repeated flaw travels through them all.",
+      "objects": [
+        {
+          "id": "tablet",
+          "name": "Replacement tablet",
+          "x": 350,
+          "y": 230,
+          "kind": "evidence",
+          "text": "New glaze surrounds the northern detour. A chipped double notch occurs in both this 1909 replacement and the later atlas.",
+          "need": []
+        },
+        {
+          "id": "ledger",
+          "name": "Repair ledger",
+          "x": 610,
+          "y": 230,
+          "kind": "evidence",
+          "text": "1909: Transfer the temporary survey line to the replacement tablet pending review. One later page has been torn out.",
+          "need": []
+        },
+        {
+          "id": "copies",
+          "name": "Turn the source gallery",
+          "x": 480,
+          "y": 300,
+          "kind": "puzzle",
+          "need": [
+            "tablet",
+            "ledger",
+            "tracing",
+            "lens"
+          ]
+        },
+        {
+          "id": "guardian",
+          "name": "Reset the route guardian",
+          "x": 760,
+          "y": 315,
+          "kind": "puzzle",
+          "need": [
+            "copies",
+            "staff"
+          ]
+        },
+        {
+          "id": "rest_copies",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "ruins",
+          "x": 480,
+          "y": 420,
+          "spawn": [
+            480,
+            169
+          ],
+          "need": []
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "pulse"
+        }
+      ]
+    },
+    "coast": {
+      "name": "Beacon Point",
+      "theme": "coast",
+      "description": "Beyond the warehouses, the public shore still waits.",
+      "objects": [
+        {
+          "id": "inez",
+          "name": "Inez Sol",
+          "x": 350,
+          "y": 300,
+          "kind": "npc",
+          "sprite": "red",
+          "text": "The lighthouse can show you the islands. The lens carriage remembers a short, long, short signal. Take a signal lantern. Public access is a promise we must keep safely.",
+          "gift": "lantern"
+        },
+        {
+          "id": "coast",
+          "name": "Assemble the public shore case",
+          "x": 570,
+          "y": 345,
+          "kind": "puzzle",
+          "need": [
+            "bell_seal",
+            "gull_seal",
+            "lantern_seal",
+            "handbill",
+            "missing",
+            "accounts"
+          ]
+        },
+        {
+          "id": "access_route",
+          "name": "Open the shore walkway",
+          "x": 730,
+          "y": 310,
+          "kind": "puzzle",
+          "need": [
+            "civic",
+            "lantern"
+          ]
+        },
+        {
+          "id": "rest_coast",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "ruins",
+          "x": 90,
+          "y": 270,
+          "spawn": [
+            880,
+            294
+          ],
+          "need": []
+        },
+        {
+          "to": "lighthouse",
+          "x": 480,
+          "y": 220,
+          "spawn": [
+            480,
+            444
+          ],
+          "need": []
+        },
+        {
+          "to": "store",
+          "x": 700,
+          "y": 390,
+          "spawn": [
+            480,
+            444
+          ],
+          "need": [
+            "beacon"
+          ]
+        },
+        {
+          "to": "bell",
+          "x": 865,
+          "y": 230,
+          "spawn": [
+            90,
+            294
+          ],
+          "need": [
+            "beacon"
+          ]
+        },
+        {
+          "to": "under",
+          "x": 200,
+          "y": 420,
+          "spawn": [
+            830,
+            294
+          ],
+          "need": []
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "lighthouse": {
+      "name": "Beacon Lighthouse",
+      "theme": "interior",
+      "description": "Light reaches where a shouted warning cannot.",
+      "objects": [
+        {
+          "id": "beacon",
+          "name": "Restore the beacon signal",
+          "x": 480,
+          "y": 250,
+          "kind": "puzzle",
+          "need": [
+            "lantern"
+          ]
+        },
+        {
+          "id": "rest_lighthouse",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "coast",
+          "x": 480,
+          "y": 420,
+          "spawn": [
+            480,
+            244
+          ],
+          "need": []
+        }
+      ],
+      "hazards": []
+    },
+    "store": {
+      "name": "Tidal Storehouse",
+      "theme": "interior",
+      "description": "A service passage opens at low tide. The missing record lies beyond.",
+      "objects": [
+        {
+          "id": "handbill",
+          "name": "Merchant handbill",
+          "x": 350,
+          "y": 200,
+          "kind": "evidence",
+          "text": "1913: The OFFICIAL festival road ends at the northern warehouses. Supplies, storage, and lodging available.",
+          "need": []
+        },
+        {
+          "id": "missing",
+          "name": "The missing ledger page",
+          "x": 610,
+          "y": 210,
+          "kind": "evidence",
+          "text": "The consortium asks clerks to retain the warehouse destination and omit temporary from the route description. The torn edge matches the repair ledger.",
+          "need": []
+        },
+        {
+          "id": "accounts",
+          "name": "Warehouse account book",
+          "x": 480,
+          "y": 320,
+          "kind": "evidence",
+          "text": "Festival storage and lodging income rose after travelers were directed to the warehouses.",
+          "need": []
+        },
+        {
+          "id": "rest_store",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "coast",
+          "x": 480,
+          "y": 420,
+          "spawn": [
+            700,
+            414
+          ],
+          "need": []
+        }
+      ],
+      "hazards": []
+    },
+    "bell": {
+      "name": "Bell Isle",
+      "theme": "island",
+      "description": "Three bells carry a message across the water.",
+      "objects": [
+        {
+          "id": "bell_seal",
+          "name": "Bell Isle seal",
+          "x": 530,
+          "y": 250,
+          "kind": "collect",
+          "text": "A fragment of the Coastkeeper seal. It records a shared duty to keep Beacon Point open to the public."
+        },
+        {
+          "id": "echoes",
+          "name": "Answer the island bells",
+          "x": 700,
+          "y": 330,
+          "kind": "puzzle",
+          "need": [
+            "lantern"
+          ]
+        },
+        {
+          "id": "rest_bell",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "coast",
+          "x": 90,
+          "y": 270,
+          "spawn": [
+            865,
+            254
+          ],
+          "need": []
+        },
+        {
+          "to": "gull",
+          "x": 860,
+          "y": 200,
+          "spawn": [
+            90,
+            284
+          ],
+          "need": [
+            "bell_seal"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "gull": {
+      "name": "Gullstone",
+      "theme": "island",
+      "description": "A white cliff holds one third of the Coastkeeper seal.",
+      "objects": [
+        {
+          "id": "gull_seal",
+          "name": "Gullstone seal",
+          "x": 530,
+          "y": 250,
+          "kind": "collect",
+          "text": "A fragment of the Coastkeeper seal. It records a shared duty to keep Beacon Point open to the public."
+        },
+        {
+          "id": "rest_gull",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "bell",
+          "x": 90,
+          "y": 260,
+          "spawn": [
+            860,
+            224
+          ],
+          "need": []
+        },
+        {
+          "to": "lantern",
+          "x": 860,
+          "y": 280,
+          "spawn": [
+            90,
+            284
+          ],
+          "need": [
+            "gull_seal"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "lantern": {
+      "name": "Lantern Key",
+      "theme": "island",
+      "description": "A sheltered harbor and an old promise of public passage.",
+      "objects": [
+        {
+          "id": "lantern_seal",
+          "name": "Lantern Key seal",
+          "x": 530,
+          "y": 250,
+          "kind": "collect",
+          "text": "A fragment of the Coastkeeper seal. It records a shared duty to keep Beacon Point open to the public."
+        },
+        {
+          "id": "rest_lantern",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "gull",
+          "x": 90,
+          "y": 260,
+          "spawn": [
+            860,
+            304
+          ],
+          "need": []
+        },
+        {
+          "to": "orchard",
+          "x": 740,
+          "y": 160,
+          "spawn": [
+            90,
+            284
+          ],
+          "need": []
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "orchard": {
+      "name": "Orchard Rock",
+      "theme": "island",
+      "description": "Grafted trees bear the patient work of earlier travelers.",
+      "objects": [
+        {
+          "id": "orchard_story",
+          "name": "Cira’s orchard journal",
+          "x": 520,
+          "y": 260,
+          "kind": "collect",
+          "text": "The eastern orchard survived because neighbors kept sharing grafts and water after the public route moved. A quiet act of memory. Your festival gains orchard lanterns."
+        },
+        {
+          "id": "rest_orchard",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "lantern",
+          "x": 90,
+          "y": 260,
+          "spawn": [
+            740,
+            184
+          ],
+          "need": []
+        },
+        {
+          "to": "far",
+          "x": 900,
+          "y": 300,
+          "spawn": [
+            90,
+            294
+          ],
+          "need": [
+            "echoes"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "far": {
+      "name": "Far Beacon",
+      "theme": "island",
+      "description": "At the edge of the charts, a light still answers.",
+      "objects": [
+        {
+          "id": "far_story",
+          "name": "The distant Wayfinder light",
+          "x": 560,
+          "y": 245,
+          "kind": "collect",
+          "text": "A brass note reads: No map is finished while people still travel. The old keepers left room for the next generation. Your compass answers."
+        },
+        {
+          "id": "rest_far",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "orchard",
+          "x": 90,
+          "y": 270,
+          "spawn": [
+            900,
+            324
+          ],
+          "need": []
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "under": {
+      "name": "The Underpath",
+      "theme": "under",
+      "description": "Forgotten maintenance passages connect the route stations.",
+      "objects": [
+        {
+          "id": "underpath",
+          "name": "Wake the old conduits",
+          "x": 480,
+          "y": 250,
+          "kind": "puzzle",
+          "need": [
+            "line",
+            "lantern",
+            "lens"
+          ]
+        },
+        {
+          "id": "rest_under",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "forest",
+          "x": 140,
+          "y": 400,
+          "spawn": [
+            640,
+            434
+          ],
+          "need": []
+        },
+        {
+          "to": "coast",
+          "x": 830,
+          "y": 270,
+          "spawn": [
+            200,
+            444
+          ],
+          "need": [
+            "underpath"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "creature"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "pulse"
+        }
+      ]
+    },
+    "mountain": {
+      "name": "Sunspire · Wind Gardens",
+      "theme": "mountain",
+      "description": "A truthful route must also carry people safely.",
+      "objects": [
+        {
+          "id": "mantle",
+          "name": "Wayfinder storm shelter",
+          "x": 330,
+          "y": 245,
+          "kind": "collect",
+          "text": "A wind mantle rests beside the shelter record. Hold Shift to steady your pace; the mantle protects against wind. Marked circles warn of falling stone."
+        },
+        {
+          "id": "rescue",
+          "name": "Help the stranded council",
+          "x": 720,
+          "y": 330,
+          "kind": "collect",
+          "need": [
+            "mantle"
+          ],
+          "text": "You secure the river line across the damaged steps. The council members cross one at a time. The safe ascent is open."
+        },
+        {
+          "id": "rest_mountain",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "town",
+          "x": 90,
+          "y": 280,
+          "spawn": [
+            740,
+            119
+          ],
+          "need": []
+        },
+        {
+          "to": "summit",
+          "x": 840,
+          "y": 160,
+          "spawn": [
+            90,
+            324
+          ],
+          "need": [
+            "mantle",
+            "rescue"
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "wind"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    },
+    "summit": {
+      "name": "Sunspire Summit",
+      "theme": "mountain",
+      "description": "The whole valley lies below. Now make the case for its future.",
+      "objects": [
+        {
+          "id": "synthesis",
+          "name": "Present the living route",
+          "x": 600,
+          "y": 265,
+          "kind": "puzzle",
+          "need": [
+            "route",
+            "rescue",
+            "accord",
+            "ferrytest",
+            "habitat",
+            "access",
+            "charter",
+            "paper1",
+            "paper2",
+            "paper3",
+            "paper4",
+            "paper5"
+          ]
+        },
+        {
+          "id": "ending",
+          "name": "Light the living line",
+          "x": 730,
+          "y": 325,
+          "kind": "ending",
+          "need": [
+            "synthesis",
+            "paper6"
+          ],
+          "text": "The council approves the living route. Varn accepts its safety plan. From Brightwater to the public shore, torches join into one bright line. Your compass rests, then pulses once toward the distant islands."
+        },
+        {
+          "id": "rest_summit",
+          "name": "Rest & refill vitality",
+          "x": 220,
+          "y": 360,
+          "kind": "rest",
+          "text": "You rest, refill your sun pips, and record your progress."
+        }
+      ],
+      "exits": [
+        {
+          "to": "mountain",
+          "x": 90,
+          "y": 300,
+          "spawn": [
+            840,
+            184
+          ],
+          "need": []
+        }
+      ],
+      "hazards": [
+        {
+          "x": 620,
+          "y": 370,
+          "radius": 22,
+          "type": "wind"
+        },
+        {
+          "x": 430,
+          "y": 330,
+          "radius": 18,
+          "type": "creature"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "banner": {
+      "title": "Festival banner",
+      "text": "A rising sun and two stitched oaks flank the eastern gate. The cloth is dated 1907.",
+      "source": "Festival guild textile",
+      "date": "1907",
+      "location": "Brightwater · Festival Square",
+      "limitation": "A ceremonial image suggests landmarks, but is not a survey."
+    },
+    "atlas": {
+      "title": "The annotated atlas",
+      "text": "Northern road. Margin: Route updated from temporary survey copy. The map was published in 1912.",
+      "source": "Town cartographers",
+      "date": "1912",
+      "location": "Vale Cartography",
+      "limitation": "The map is official, but its source was temporary."
+    },
+    "foundation": {
+      "title": "Monument foundation",
+      "text": "The old socket points east. Fresh tool scratches curve around the newer north-facing arrow.",
+      "source": "Stone foundation",
+      "date": "Undated",
+      "location": "Brightwater · Festival Square",
+      "limitation": "Wear establishes alteration, not the date or motive."
+    },
+    "stones": {
+      "title": "Eastern boundary stones",
+      "text": "Three worn sun symbols line up between Brightwater and the twin oaks. Their cuts sit beneath recent paint.",
+      "source": "Survey marks in stone",
+      "date": "Undated",
+      "location": "Sunleaf · Twin Oaks",
+      "limitation": "The stones support an alignment, not its present safety."
+    },
+    "song": {
+      "title": "Procession song",
+      "text": "Through the twin crowns, toward the dawn; past the river, to the public shore. The verse is preserved on an old shelter board.",
+      "source": "Carved song, anonymous",
+      "date": "Undated",
+      "location": "Ranger Lodge",
+      "limitation": "Songs can change in transmission; compare the land."
+    },
+    "notches": {
+      "title": "Twin oak notches",
+      "text": "Beneath the paint, paired old cuts face the eastern boundary stones. The trees and song preserve the same line.",
+      "source": "Living bark marks",
+      "date": "Undated",
+      "location": "Sunleaf · Twin Oaks",
+      "limitation": "Tree marks do not explain why the road was abandoned."
+    },
+    "log": {
+      "title": "Ferryman’s log",
+      "text": "1908: The river rose beyond the chapel mark. The stone ford broke. Travelers were sent north until repairs could make a crossing safe.",
+      "source": "Working ferryman",
+      "date": "1908",
+      "location": "Silverrun · Reedbank",
+      "limitation": "A firsthand record of the flood, not the later mapmaking."
+    },
+    "receipt": {
+      "title": "Northern bridge receipt",
+      "text": "Emergency northern access: timber and labor purchased after the 1908 flood.",
+      "source": "Public works receipt",
+      "date": "1908",
+      "location": "Silverrun · Reedbank",
+      "limitation": "A payment establishes work, not permanent route status."
+    },
+    "survey": {
+      "title": "Broken ford survey",
+      "text": "The ford stones remain undermined. Even at low water, a crowded procession would be unsafe.",
+      "source": "Current field inspection",
+      "date": "Present",
+      "location": "Silverrun · Reedbank",
+      "limitation": "Conditions may change; this inspection applies now."
+    },
+    "tablet": {
+      "title": "Replacement tablet",
+      "text": "New glaze surrounds the northern detour. A chipped double notch occurs in both this 1909 replacement and the later atlas.",
+      "source": "Restoration tablet",
+      "date": "1909",
+      "location": "Hall of Copies",
+      "limitation": "Durable material does not make a copied route original."
+    },
+    "ledger": {
+      "title": "Repair ledger",
+      "text": "1909: Transfer the temporary survey line to the replacement tablet pending review. One later page has been torn out.",
+      "source": "Restoration workers",
+      "date": "1909",
+      "location": "Hall of Copies",
+      "limitation": "The missing page limits what this volume can prove."
+    },
+    "tracing": {
+      "title": "Atlas tracing sheet",
+      "text": "A tracing overlays the tablet’s northern line and reproduces its double notch. It bears the atlas workshop seal.",
+      "source": "Map workshop tracing",
+      "date": "1912",
+      "location": "Mosaic Terrace",
+      "limitation": "This connects copying, but does not identify a later motive."
+    },
+    "handbill": {
+      "title": "Merchant handbill",
+      "text": "1913: The OFFICIAL festival road ends at the northern warehouses. Supplies, storage, and lodging available.",
+      "source": "Merchant consortium",
+      "date": "1913",
+      "location": "Tidal Storehouse",
+      "limitation": "Advertising reveals an interest; it does not alone prove manipulation."
+    },
+    "missing": {
+      "title": "The missing ledger page",
+      "text": "The consortium asks clerks to retain the warehouse destination and omit temporary from the route description. The torn edge matches the repair ledger.",
+      "source": "Consortium letter attached to ledger",
+      "date": "1913",
+      "location": "Tidal Storehouse",
+      "limitation": "It proves this request, not that every civic worker agreed."
+    },
+    "accounts": {
+      "title": "Warehouse account book",
+      "text": "Festival storage and lodging income rose after travelers were directed to the warehouses.",
+      "source": "Warehouse accounts",
+      "date": "1913–1916",
+      "location": "Tidal Storehouse",
+      "limitation": "Income supports benefit, but benefit alone does not prove intent."
+    },
+    "signs": {
+      "title": "Sign painter’s receipt",
+      "text": "Remove temporary from the northern road signs; repaint the destination as warehouse road.",
+      "source": "Civic sign painter",
+      "date": "1914",
+      "location": "Finch Hall & Civic Archive",
+      "limitation": "Records an instruction; does not explain every resident’s belief."
+    },
+    "programs": {
+      "title": "Festival programs",
+      "text": "1908: emergency detour. 1912: northern route. 1916: traditional northern road. Repetition slowly replaced qualification.",
+      "source": "Festival committee",
+      "date": "1908–1916",
+      "location": "Finch Hall & Civic Archive",
+      "limitation": "Programs show public language, not private motives."
+    },
+    "charter": {
+      "title": "Varn maintenance charter",
+      "text": "The Varn family inherited upkeep of the northern road after its adoption. The charter does not establish involvement in the 1908 decision.",
+      "source": "Civic charter",
+      "date": "Later civic period",
+      "location": "Finch Hall & Civic Archive",
+      "limitation": "Inherited responsibility is not proof of originating the deception."
+    },
+    "accord": {
+      "title": "Coastkeeper Accord",
+      "text": "The three island fragments share a seal: Beacon Point is held for public access.",
+      "source": "Coastkeepers, historic accord",
+      "date": "See source",
+      "location": "Regional investigation",
+      "limitation": "Public rights still require a safe physical access route."
+    },
+    "ferrytest": {
+      "title": "Modern ferry safety test",
+      "text": "A restored drive, balanced cargo, and protected reed channel passed a supervised crossing.",
+      "source": "Tavi and Liora, present inspection",
+      "date": "See source",
+      "location": "Regional investigation",
+      "limitation": "The crossing needs ongoing maintenance and weather checks."
+    },
+    "habitat": {
+      "title": "Habitat survey",
+      "text": "The old forest line can reopen if traffic stays on marked ground and nesting reeds retain flow.",
+      "source": "Orin and Liora, present survey",
+      "date": "See source",
+      "location": "Regional investigation",
+      "limitation": "Seasonal changes will require later review."
+    },
+    "access": {
+      "title": "Public access inspection",
+      "text": "A marked coastal walkway reaches the lawful shore above the sensitive tide pools.",
+      "source": "Inez and Liora, present inspection",
+      "date": "See source",
+      "location": "Regional investigation",
+      "limitation": "Access must close during dangerous storms."
+    }
+  },
+  "puzzles": {
+    "opening": {
+      "name": "Turn the plaza arrow",
+      "text": "The foundation socket is older than the rotated arrow. Align the arrow with the old socket; compare the two procession sources first.",
+      "labels": [
+        "Arrow"
+      ],
+      "choices": [
+        [
+          "North",
+          "East",
+          "South",
+          "West"
+        ]
+      ],
+      "answer": [
+        1
+      ],
+      "need": [
+        "atlas",
+        "banner",
+        "foundation"
+      ],
+      "reward": [],
+      "paper": 1,
+      "award": []
+    },
+    "forest": {
+      "name": "Align the boundary markers",
+      "text": "Orin’s shelter verse names the route in order: twin crowns, river, public shore. Rotate the three markers to carry that sequence through the grove.",
+      "labels": [
+        "Near stone",
+        "Middle stone",
+        "Far stone"
+      ],
+      "choices": [
+        [
+          "Shore",
+          "Twin oaks",
+          "River"
+        ],
+        [
+          "Shore",
+          "Twin oaks",
+          "River"
+        ],
+        [
+          "Shore",
+          "Twin oaks",
+          "River"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "need": [
+        "stones",
+        "song",
+        "notches",
+        "staff"
+      ],
+      "reward": [],
+      "paper": 2,
+      "award": []
+    },
+    "sluice": {
+      "name": "Balance the sluice",
+      "text": "The brass plate reads: four units total. One for the mill, two for the ferry, one for nesting reeds. Closing the reeds would drain a habitat. Set each gate.",
+      "labels": [
+        "Mill",
+        "Ferry",
+        "Reeds"
+      ],
+      "choices": [
+        [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        1
+      ],
+      "need": [
+        "line"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    },
+    "river": {
+      "name": "Rebuild the flood sequence",
+      "text": "Fit the events into Tavi’s timeline rack. Use the dated log and receipt: water rises, the ford breaks, then northern access opens.",
+      "labels": [
+        "First",
+        "Then",
+        "Finally"
+      ],
+      "choices": [
+        [
+          "Northern detour",
+          "Rising water",
+          "Broken ford"
+        ],
+        [
+          "Northern detour",
+          "Rising water",
+          "Broken ford"
+        ],
+        [
+          "Northern detour",
+          "Rising water",
+          "Broken ford"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "need": [
+        "log",
+        "receipt",
+        "survey",
+        "sluice"
+      ],
+      "reward": [],
+      "paper": 3,
+      "award": []
+    },
+    "copies": {
+      "name": "Turn the source gallery",
+      "text": "Turn each gallery frame toward the source it copied. The ledger names the temporary survey as the tablet’s source. The tracing carries the tablet’s flaw into the atlas.",
+      "labels": [
+        "1909 tablet faces",
+        "1912 tracing faces",
+        "1912 atlas faces"
+      ],
+      "choices": [
+        [
+          "Temporary survey",
+          "Replacement tablet",
+          "Tracing sheet"
+        ],
+        [
+          "Temporary survey",
+          "Replacement tablet",
+          "Tracing sheet"
+        ],
+        [
+          "Temporary survey",
+          "Replacement tablet",
+          "Tracing sheet"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "need": [
+        "tablet",
+        "ledger",
+        "tracing",
+        "lens"
+      ],
+      "reward": [],
+      "paper": 4,
+      "award": []
+    },
+    "guardian": {
+      "name": "Reset the route guardian",
+      "text": "The guardian pulses across the chamber. Its maintenance panel asks for the original route stations: oaks, river, shore. Rebuild its sequence to make the chamber safe.",
+      "labels": [
+        "First station",
+        "Second station",
+        "Third station"
+      ],
+      "choices": [
+        [
+          "Shore",
+          "Oaks",
+          "River"
+        ],
+        [
+          "Shore",
+          "Oaks",
+          "River"
+        ],
+        [
+          "Shore",
+          "Oaks",
+          "River"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "need": [
+        "copies",
+        "staff"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    },
+    "beacon": {
+      "name": "Restore the beacon signal",
+      "text": "Inez taught the harbor call: short, long, short. Set the three shutters. The charted island passages will open.",
+      "labels": [
+        "Shutter I",
+        "Shutter II",
+        "Shutter III"
+      ],
+      "choices": [
+        [
+          "Dark",
+          "Short",
+          "Long"
+        ],
+        [
+          "Dark",
+          "Short",
+          "Long"
+        ],
+        [
+          "Dark",
+          "Short",
+          "Long"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        1
+      ],
+      "need": [
+        "lantern"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    },
+    "coast": {
+      "name": "Assemble the public shore case",
+      "text": "Inez’s case table has places for ownership, action, and benefit. Fit the records according to what each can actually show.",
+      "labels": [
+        "Public right",
+        "Pressure on clerks",
+        "Financial benefit"
+      ],
+      "choices": [
+        [
+          "Coastkeeper Accord",
+          "Missing ledger page",
+          "Account book"
+        ],
+        [
+          "Coastkeeper Accord",
+          "Missing ledger page",
+          "Account book"
+        ],
+        [
+          "Coastkeeper Accord",
+          "Missing ledger page",
+          "Account book"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "need": [
+        "bell_seal",
+        "gull_seal",
+        "lantern_seal",
+        "handbill",
+        "missing",
+        "accounts"
+      ],
+      "reward": [],
+      "paper": 5,
+      "award": [
+        "accord"
+      ]
+    },
+    "civic": {
+      "name": "Ring the civic timeline",
+      "text": "Ring the four dated plates in sequence. The records trace change through emergency, copying, promotion, then removal of qualifying language. Varn inherited road maintenance; these records do not make him the original author.",
+      "labels": [
+        "1908",
+        "1909",
+        "1913",
+        "1914"
+      ],
+      "choices": [
+        [
+          "Flood detour",
+          "Copied tablet",
+          "Merchant handbill",
+          "Repainted signs"
+        ],
+        [
+          "Flood detour",
+          "Copied tablet",
+          "Merchant handbill",
+          "Repainted signs"
+        ],
+        [
+          "Flood detour",
+          "Copied tablet",
+          "Merchant handbill",
+          "Repainted signs"
+        ],
+        [
+          "Flood detour",
+          "Copied tablet",
+          "Merchant handbill",
+          "Repainted signs"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "need": [
+        "coast",
+        "signs",
+        "programs",
+        "charter"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    },
+    "ferry": {
+      "name": "Test the public ferry",
+      "text": "A safe crossing needs a balanced deck, a secured river line, and steady flow. Tavi’s test plate: passengers left, counterweight right, river line secured.",
+      "labels": [
+        "Left deck",
+        "Right deck",
+        "River line"
+      ],
+      "choices": [
+        [
+          "Empty",
+          "Passengers",
+          "Counterweight"
+        ],
+        [
+          "Passengers",
+          "Empty",
+          "Counterweight"
+        ],
+        [
+          "Loose",
+          "Secured"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        1
+      ],
+      "need": [
+        "civic",
+        "sluice",
+        "line"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": [
+        "ferrytest"
+      ]
+    },
+    "habitat_route": {
+      "name": "Protect the grove route",
+      "text": "Orin points out nesting ground beside the old marks. Keep people on the marked trail, maintain a rope edge, and leave nests undisturbed.",
+      "labels": [
+        "Trail",
+        "Boundary",
+        "Nests"
+      ],
+      "choices": [
+        [
+          "Marked ground",
+          "New shortcut"
+        ],
+        [
+          "Rope edge",
+          "Remove markers"
+        ],
+        [
+          "Leave undisturbed",
+          "Move nests"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        0
+      ],
+      "need": [
+        "civic",
+        "staff"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": [
+        "habitat"
+      ]
+    },
+    "markers": {
+      "name": "Authenticate the route markers",
+      "text": "Sela’s lens separates old edges from guesswork. Restore the supported east alignment; keep the missing section visibly blank.",
+      "labels": [
+        "Route alignment",
+        "Missing tile"
+      ],
+      "choices": [
+        [
+          "North",
+          "East"
+        ],
+        [
+          "Invent a match",
+          "Leave blank"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "need": [
+        "civic",
+        "lens"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    },
+    "access_route": {
+      "name": "Open the shore walkway",
+      "text": "Inez proposes an elevated marked walkway. It protects the pools and keeps access public, with storm closures.",
+      "labels": [
+        "Path",
+        "Access",
+        "Storms"
+      ],
+      "choices": [
+        [
+          "Across tide pools",
+          "Raised walkway"
+        ],
+        [
+          "Public",
+          "Private toll"
+        ],
+        [
+          "Close when unsafe",
+          "Always open"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        0
+      ],
+      "need": [
+        "civic",
+        "lantern"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": [
+        "access"
+      ]
+    },
+    "route": {
+      "name": "Build the living route",
+      "text": "Mira’s route board must honor the evidence and today’s conditions. The ford is unsafe. Keep the eastern line, use the tested ferry, pass the authenticated ruins, and reach public shore.",
+      "labels": [
+        "Forest",
+        "Crossing",
+        "Destination"
+      ],
+      "choices": [
+        [
+          "Eastern marks",
+          "Northern warehouses"
+        ],
+        [
+          "Broken ford",
+          "Public ferry"
+        ],
+        [
+          "Public shore",
+          "Private stores"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        0
+      ],
+      "need": [
+        "ferry",
+        "habitat_route",
+        "markers",
+        "access_route",
+        "paper5"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    },
+    "synthesis": {
+      "name": "Present the living route",
+      "text": "Varn asks: how does this proposal answer the ford? Present the tested ferry, distinguish benefit from proof of pressure, and acknowledge maintenance. The council needs a qualified case, not certainty without evidence.",
+      "labels": [
+        "Ford response",
+        "Proof of pressure",
+        "Limitation"
+      ],
+      "choices": [
+        [
+          "Restore old ford",
+          "Tested public ferry"
+        ],
+        [
+          "Income alone",
+          "Ledger request"
+        ],
+        [
+          "No uncertainty",
+          "Ongoing maintenance"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        1
+      ],
+      "need": [
+        "route",
+        "rescue",
+        "accord",
+        "ferrytest",
+        "habitat",
+        "access",
+        "charter",
+        "paper1",
+        "paper2",
+        "paper3",
+        "paper4",
+        "paper5"
+      ],
+      "reward": [],
+      "paper": 6,
+      "award": []
+    },
+    "echoes": {
+      "name": "Answer the island bells",
+      "text": "The carved bell score reads low, high, middle. Each bell also flashes its name so the pattern can be read without sound.",
+      "labels": [
+        "First bell",
+        "Second bell",
+        "Third bell"
+      ],
+      "choices": [
+        [
+          "Low",
+          "Middle",
+          "High"
+        ],
+        [
+          "Low",
+          "Middle",
+          "High"
+        ],
+        [
+          "Low",
+          "Middle",
+          "High"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        1
+      ],
+      "need": [
+        "lantern"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    },
+    "underpath": {
+      "name": "Wake the old conduits",
+      "text": "The maintenance diagram combines the river and beacon rules: reeds one, ferry two, lantern long. Carry those working settings into the old system.",
+      "labels": [
+        "Reeds",
+        "Ferry",
+        "Lantern"
+      ],
+      "choices": [
+        [
+          "0",
+          "1",
+          "2"
+        ],
+        [
+          "0",
+          "1",
+          "2"
+        ],
+        [
+          "Dark",
+          "Short",
+          "Long"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        2
+      ],
+      "need": [
+        "line",
+        "lantern",
+        "lens"
+      ],
+      "reward": [],
+      "paper": 0,
+      "award": []
+    }
+  },
+  "worksheets": [
+    "Before leaving Brightwater, predict which direction the historic Sunpath followed. Use one detail from the banner and one from the atlas or monument.",
+    "Which two discoveries most strongly support the eastern forest route? Explain how they reinforce each other.",
+    "Why did Brightwater change the route after 1908? Was the original decision reasonable? Support both parts.",
+    "Explain how the temporary detour became part of the official atlas. Identify one source limitation.",
+    "Who benefited from the northern route, and what evidence shows that benefit? Explain why motive alone does not prove the case.",
+    "Recommend the modern festival route. Use at least four sources from three regions, address the broken ford, and explain one limitation or tradeoff."
+  ]
+}
