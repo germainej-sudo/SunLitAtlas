@@ -7,7 +7,7 @@ var layouts: Dictionary
 var flags: Dictionary = {}
 var visited: Array = []
 var room_id: String = "town"
-var player_pos := Vector2(450, 350)
+var player_pos := Vector2(920, 650)
 var vitality: int = 5
 var profile: int = 1
 var seconds: float = 0.0
@@ -46,7 +46,7 @@ func new_journey(slot: int) -> void:
 	flags = {}
 	visited = ["town"]
 	room_id = "town"
-	player_pos = Vector2(450,350)
+	player_pos = Vector2(920,650)
 	vitality = 5
 	seconds = 0.0
 	changed.emit()
@@ -159,7 +159,10 @@ func load_game(slot: int) -> bool:
 		flags = data.flags
 		visited = data.visited.filter(func(v: Variant) -> bool: return book.rooms.has(v))
 		room_id = data.room
-		player_pos = Vector2(clampf(data.position[0],30,930),clampf(data.position[1],65,505))
+		var size_data: Array=layouts[room_id].get("size",[960,540])
+		player_pos = Vector2(
+			clampf(data.position[0],30,float(size_data[0])-30),
+			clampf(data.position[1],65,float(size_data[1])-35))
 		vitality = clampi(int(data.vitality),1,5)
 		seconds = maxf(0,float(data.get("seconds",0)))
 		if data.get("settings") is Dictionary:

@@ -32,7 +32,7 @@ Doors and travel markers use the same interact control. Walk close enough to see
 
 ## What is included
 
-- 20 connected, compact sectors: town, regional exteriors, interiors, five islands, Underpath, mountain, and summit.
+- A 2400×1080 scrolling Brightwater hub, plus 19 connected regional exteriors, interiors, islands, Underpath, mountain, and summit sectors.
 - The central mystery from the two processions through the living-route decision and epilogue.
 - 22 inspectable journal sources with provenance and limitations.
 - 17 authored mechanisms, with hints and recovery assistance.
@@ -67,7 +67,7 @@ If the primary save cannot be parsed or validated, Continue tries its previous s
 - `scenes/main.tscn`: entry scene.
 - `scripts/state.gd`: durable state, gates, objectives, validated saves, controls.
 - `scripts/main.gd`: world loading, interactions, UI, hazards, and audio.
-- `scripts/player.gd`: movement, compact foot collider, directional animation and defensive actions.
+- `scripts/player.gd`: movement, room-aware world bounds, compact foot collider, directional animation and defensive actions.
 - `scripts/ai_dialogue.gd`: optional Gemini network service; no authority over progress.
 - `scripts/atlas_map.gd`: discovered-location chart.
 - `data/world.json`: authored sectors, doors, sources, mechanisms, and worksheet prompts.

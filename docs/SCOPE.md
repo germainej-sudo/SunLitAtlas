@@ -10,7 +10,7 @@ All principal mentors appear with authored dialogue. The seven chapter themes an
 
 Mechanisms use contextual control panels representing arrows, route stones, source frames, shutters, sluices, timeline racks, and route proposals. Solving them changes persistent flags and opens travel or the next investigation. Wrong settings do not remove evidence. Recovery assistance is offered after a hint ladder. Main story progression is checked independently of optional Gemini output.
 
-The art uses generated pixel textures and sprites inspired by the provided composition and palette. It is an approximation of the reference, not a promise of identical production quality. The world is drawn with layered Sprite2D composition and explicit collision geometry. The 640×360 UI view frames compact 960×540 authored sectors at 2/3 camera zoom; this build presents one sector at a time rather than large scrolling sectors.
+The art uses generated pixel textures and sprites inspired by the provided composition and palette. It is an approximation of the reference, not a promise of identical production quality. The world is drawn with layered Sprite2D composition and explicit collision geometry. The 640×360 UI view frames the 2400×1080 scrolling Brightwater hub and compact 960×540 destination sectors at 2/3 camera zoom. Brightwater now contains separated civic, festival, garden, market, residential, and river districts without loading between them.
 
 ## Condensed or not implemented
 

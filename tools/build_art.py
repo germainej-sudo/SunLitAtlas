@@ -98,65 +98,106 @@ sprite('shelves',94,70,shelves)
 
 world=json.loads((R/'data/world.json').read_text());layout={}
 for index,(id,r) in enumerate(world['rooms'].items()):
- rng=random.Random(100+index);theme=r['theme'];inside=theme in ('interior','under');w,h=960,540
+ rng=random.Random(100+index);theme=r['theme'];inside=theme in ('interior','under')
+ w,h=(2400,1080) if id=='town' else (960,540)
  colors={'town':('#79b85a','#e4cf8c'),'forest':('#6daa50','#c6bd78'),'river':('#78ac61','#ded198'),'ruins':('#a6b891','#d8cfaa'),'coast':('#81b790','#e6d69e'),'island':('#78ac81','#eadba5'),'mountain':('#bdb875','#e2d6b2'),'interior':('#73694f','#b39a6e'),'under':('#455b51','#8e9174')};grass,path=colors[theme]
  im=Image.new('RGB',(w,h),grass);d=ImageDraw.Draw(im)
  for y in range(0,h,16):
   for x in range(0,w,16):
    rgb=tuple(max(0,min(255,v+rng.randint(-6,6))) for v in __import__('PIL').ImageColor.getrgb(grass));rect(d,(x,y,x+15,y+15),rgb)
- for _ in range(8000):
+ for _ in range(int(8000*w*h/(960*540))):
   x=rng.randrange(w);y=rng.randrange(h);c=rng.choice(['#bad16a','#78b356','#6ca24f']) if theme=='forest' else tuple(max(0,min(255,v+rng.randint(-15,15))) for v in __import__('PIL').ImageColor.getrgb(grass));rect(d,(x,y,x+1,y+1),c)
- # Broad central plaza and branching roads keep objects reachable.
- rect(d,(85,245,900,323),path);rect(d,(426,75,524,510),path);rect(d,(270,172,765,406),path)
- if theme in ('town','ruins','interior','under'):
-  for y in range(176,403,16):
-   for x in range(272+(8 if (y//16)%2 else 0),759,24):
+ if id=='town':
+  # Five-screen Brightwater: civic ward, rehearsal meadow, central square,
+  # eastern gardens, market riverbank, and roads to the wider journey.
+  rect(d,(0,500,2190,610),path);rect(d,(1130,0,1270,h),path)
+  rect(d,(840,350,1540,760),path);rect(d,(360,255,2040,345),path)
+  rect(d,(390,300,500,530),path);rect(d,(1880,300,1980,530),path)
+  rect(d,(600,590,800,820),path);rect(d,(1680,590,1890,850),path)
+  # Rehearsal field stripes, garden beds, and a warmer riverbank make the
+  # districts readable without labels or a separate loading screen.
+  for y in range(660,965,38):
+   rect(d,(100,y,540,y+18),'#70aa51');rect(d,(110,y+3,530,y+5),'#a8c965')
+  for x in range(1570,2110,92):
+   rect(d,(x,120,x+62,245),'#5c9e52');rect(d,(x+5,126,x+57,239),'#8fbe60')
+   for yy in range(136,234,23):rect(d,(x+15,yy,x+20,yy+5),rng.choice(['#f4d46f','#ef8f70','#fff0b3']))
+  rect(d,(2100,0,2180,h),'#91b76b')
+  for y in range(0,h,34):rect(d,(2146,y,2152,y+22),'#d7c693')
+  # Cobbles are limited to the civic heart so grass, dirt, and stone each
+  # retain a strong visual identity while Liora travels.
+  for y in range(365,746,16):
+   for x in range(855+(8 if (y//16)%2 else 0),1525,24):
     rgb=tuple(max(0,min(255,v+rng.randint(-9,7))) for v in __import__('PIL').ImageColor.getrgb(path));rect(d,(x,y,x+22,y+14),rgb)
+  # Low field fences remain visual only. Collision comes from authored props.
+  for x in range(90,570,32):
+   rect(d,(x,640,x+5,665),'#8f6b43');rect(d,(x,649,x+30,654),'#b58c54')
+  for x in range(1540,2140,32):
+   rect(d,(x,270,x+5,295),'#8f6b43');rect(d,(x,279,x+30,284),'#b58c54')
+ else:
+  # Compact destination rooms retain their original proportions and paths.
+  rect(d,(85,245,900,323),path);rect(d,(426,75,524,510),path);rect(d,(270,172,765,406),path)
+  if theme in ('ruins','interior','under'):
+   for y in range(176,403,16):
+    for x in range(272+(8 if (y//16)%2 else 0),759,24):
+     rgb=tuple(max(0,min(255,v+rng.randint(-9,7))) for v in __import__('PIL').ImageColor.getrgb(path));rect(d,(x,y,x+22,y+14),rgb)
  if inside:
   rect(d,(80,65,880,140),'#665b4c');rect(d,(94,77,866,128),'#9a8767');rect(d,(80,130,880,143),'#443f36');rect(d,(85,440,880,461),'#665b4c')
+ water_width=0;bridge_spans=[];xx=0
  if theme in ('town','river','coast','island'):
   # Water stays outside walkways; bridges are explicit gaps in the banks.
-  xx=805 if theme=='town' else 790
-  rect(d,(xx,0,xx+72,h),'#338bb2')
-  for _ in range(170):
-   x=rng.randrange(xx+4,xx+65);y=rng.randrange(h);rect(d,(x,y,x+rng.randrange(3,10),y+1),rng.choice(['#439dc0','#55a9c7','#287ca5']))
-  for y0,y1 in [(190,330),(375,450)]:
-   rect(d,(xx-8,y0,xx+79,y1),'#b9b38f')
-   for x in range(xx-4,xx+76,8):rect(d,(x,y0+2,x+1,y1-2),'#d6cba5')
+  xx=2180 if id=='town' else 790;water_width=150 if id=='town' else 72
+  bridge_spans=[(470,610),(785,870)] if id=='town' else [(190,330),(375,450)]
+  rect(d,(xx,0,xx+water_width,h),'#338bb2')
+  for _ in range(int(170*water_width*h/(72*540))):
+   x=rng.randrange(xx+4,xx+water_width-7);y=rng.randrange(h);rect(d,(x,y,x+rng.randrange(3,10),y+1),rng.choice(['#439dc0','#55a9c7','#287ca5']))
+  for y0,y1 in bridge_spans:
+   rect(d,(xx-8,y0,xx+water_width+7,y1),'#b9b38f')
+   for x in range(xx-4,xx+water_width+4,8):rect(d,(x,y0+2,x+1,y1-2),'#d6cba5')
   for yy in range(0,h,16):
-   if not 180<yy<460:rect(d,(xx-8,yy,xx-1,yy+14),'#d4cca8');rect(d,(xx+72,yy,xx+79,yy+14),'#d4cca8')
+   if not any(y0-10<yy<y1+10 for y0,y1 in bridge_spans):
+    rect(d,(xx-8,yy,xx-1,yy+14),'#d4cca8');rect(d,(xx+water_width,yy,xx+water_width+7,yy+14),'#d4cca8')
  decor=[];coll=[]
  def deco(asset,x,y,box=None):
   decor.append(dict(asset=asset,x=x,y=y))
   if box:coll.append([x+box[0],y+box[1],box[2],box[3]])
- # Water collision mirrors painted channels and bridge gaps.
- if theme in ('town','river','coast','island'):
-  for y0,y1 in [(0,190),(330,375),(450,540)]:coll.append([xx,y0,72,y1-y0])
+ if water_width:
+  cursor=0
+  for y0,y1 in bridge_spans:
+   if cursor<y0:coll.append([xx,cursor,water_width,y0-cursor])
+   cursor=y1
+  if cursor<h:coll.append([xx,cursor,water_width,h-cursor])
  if id=='town':
-  deco('house',480,160,[-77,-78,153,68]);deco('house',220,182,[-77,-78,153,68]);deco('house',140,470,[-77,-78,153,68]);deco('gate',890,250)
+  # Enterable destinations sit in separate districts, more than a screen apart.
+  deco('house',430,310,[-77,-78,153,68]);deco('house',1930,315,[-77,-78,153,68])
+  for x,y in [(250,475),(1710,475),(1660,920),(2030,930)]:deco('house',x,y,[-77,-78,153,68])
+  deco('gate',2280,540)
  elif not inside:
   if id in ('forest','river'):deco('house',230 if id=='forest' else 250,155,[-77,-78,153,68])
   if id=='ruins':deco('house',480,150,[-77,-78,153,68])
   if id=='coast':deco('tower',480,220,[-24,-78,48,68])
- # Decoration excluded from all gameplay and door approaches.
  occupied=[(o['x'],o['y']) for o in r['objects']]+[(o['x'],o['y']) for o in r['exits']]
  if not inside:
-  for _ in range(70):
-   x=rng.randrange(45,920);y=rng.randrange(75,510)
-   if (260<x<775 and 165<y<420) or (410<x<545) or (235<y<345) or (theme in ('town','river','coast','island') and 785<x<885):continue
+  tree_count=190 if id=='town' else 70
+  for _ in range(tree_count):
+   x=rng.randrange(45,w-40);y=rng.randrange(75,h-30)
+   if id=='town':
+    reserved=(y>470 and y<630) or (x>1080 and x<1320) or (x>820 and x<1560 and y>320 and y<780) or (x>330 and x<2070 and y>220 and y<370) or (x>560 and x<830 and y>590 and y<850) or (x>1640 and x<2020 and y>570 and y<880) or x>2100
+    if reserved:continue
+   elif (260<x<775 and 165<y<420) or (410<x<545) or (235<y<345) or (theme in ('river','coast','island') and 785<x<885):continue
    if any(abs(x-ox)<90 and abs(y-oy)<95 for ox,oy in occupied):continue
-   if any(abs(x-z['x'])<45 and abs(y-z['y'])<45 for z in decor):continue
+   if any(abs(x-z['x'])<48 and abs(y-z['y'])<48 for z in decor):continue
    deco('tree',x,y,[-10,-18,20,17])
- for x,y in [(290,170),(750,170),(290,425),(740,430)]:deco('lamp',x,y)
- for x,y in [(350,155),(610,155),(325,435),(630,435)]:deco('flowers',x,y)
- for x,y in [(330,150),(660,150)]:
-  if id=='town':
-   d.line((x,y,x+160,y+18),fill='#99794c',width=1)
-   for j in range(7):d.polygon([(x+j*23,y+j*2),(x+j*23+14,y+j*2+2),(x+j*23+7,y+j*2+19)],fill=['#df7557','#368fa8','#f0c653'][j%3])
- # Authored regional landmarks and lived-in perimeter details.
  if id=='town':
-  deco('market',715,478);deco('bench',345,397);deco('bench',660,440)
-  for x,y in [(80,340),(170,230),(610,450),(915,435)]:deco('flowers',x,y)
+  for x,y in [(430,365),(700,540),(930,340),(1070,340),(1410,340),(1540,340),(1930,370),(930,770),(1070,770),(1410,770),(1540,770),(1740,630),(1960,630)]:deco('lamp',x,y)
+  for x,y in [(360,350),(500,350),(620,640),(810,820),(880,315),(1540,315),(1810,350),(2050,350),(1620,570),(2030,620),(350,940),(2080,980)]:deco('flowers',x,y)
+  for x,y in [(520,620),(780,620),(950,800),(1480,800),(1730,885),(2020,760)]:deco('bench',x,y)
+  deco('market',1790,790);deco('market',1940,790)
+  for x,y,length in [(570,620,230),(930,330,220),(1320,330,220),(1680,615,250)]:
+   d.line((x,y,x+length,y+18),fill='#99794c',width=2)
+   for j in range(length//24):d.polygon([(x+j*24,y+j*2),(x+j*24+14,y+j*2+2),(x+j*24+7,y+j*2+19)],fill=['#df7557','#368fa8','#f0c653'][j%3])
+ else:
+  for x,y in [(290,170),(750,170),(290,425),(740,430)]:deco('lamp',x,y)
+  for x,y in [(350,155),(610,155),(325,435),(630,435)]:deco('flowers',x,y)
  if id=='forest':
   deco('tree',617,180,[-10,-18,20,17]);deco('tree',709,180,[-10,-18,20,17]);deco('bench',350,430)
  if theme in ('ruins','under'):
@@ -178,7 +219,7 @@ for index,(id,r) in enumerate(world['rooms'].items()):
    x=rng.randrange(w);y=rng.randrange(h)
    if im.getpixel((x,y))==path_rgb:
     offset=rng.choice([-9,-5,5,9]);rect(d,(x,y,x+1,y),tuple(max(0,min(255,v+offset)) for v in path_rgb))
- im.save(A/(id+'.png'));layout[id]=dict(decor=decor,collision=coll)
+ im.save(A/(id+'.png'));layout[id]=dict(size=[w,h],decor=decor,collision=coll)
 (R/'data/layout.json').write_text(json.dumps(layout))
 # Gentle original looping pentatonic themes. No external sound dependency.
 rate=22050

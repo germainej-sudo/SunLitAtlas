@@ -9,6 +9,7 @@ var cooldown: float = 0
 var facing := Vector2.DOWN
 var walk := Vector2.ZERO
 var sprite: Sprite2D
+var movement_bounds := Rect2(Vector2(24,65),Vector2(912,449))
 
 func _ready() -> void:
 	var collider := CollisionShape2D.new()
@@ -46,8 +47,8 @@ func _physics_process(delta: float) -> void:
 	var speed := 100.0 if not Input.is_physical_key_pressed(KEY_SHIFT) else 140.0
 	velocity = facing * 260 if dodge_time>0 else walk*speed
 	move_and_slide()
-	position.x = clampf(position.x,24,936)
-	position.y = clampf(position.y,65,514)
+	position.x = clampf(position.x,movement_bounds.position.x,movement_bounds.end.x)
+	position.y = clampf(position.y,movement_bounds.position.y,movement_bounds.end.y)
 	z_index = int(position.y)
 	sprite.frame = direction*4 + (int(clock*9)%4 if walk.length()>.1 else 0)
 	sprite.modulate.a = .4 if hurt_time>0 and int(clock*12)%2==0 else 1.0

@@ -1,15 +1,15 @@
 {
   "rooms": {
     "town": {
-      "name": "Brightwater · Festival Square",
+      "name": "Brightwater · Festival District",
       "theme": "town",
-      "description": "Two processions. Two routes. One celebration at a standstill.",
+      "description": "Festival roads cross gardens, homes, fields, and the river while two processions wait for the truth.",
       "objects": [
         {
           "id": "banner",
           "name": "Festival banner",
-          "x": 350,
-          "y": 225,
+          "x": 640,
+          "y": 690,
           "kind": "evidence",
           "text": "A rising sun and two stitched oaks flank the eastern gate. The cloth is dated 1907.",
           "need": []
@@ -17,8 +17,8 @@
         {
           "id": "foundation",
           "name": "Monument foundation",
-          "x": 580,
-          "y": 330,
+          "x": 1180,
+          "y": 540,
           "kind": "evidence",
           "text": "The old socket points east. Fresh tool scratches curve around the newer north-facing arrow.",
           "need": []
@@ -26,28 +26,18 @@
         {
           "id": "aster",
           "name": "Aster Finch",
-          "x": 450,
-          "y": 300,
+          "x": 720,
+          "y": 760,
           "kind": "npc",
           "sprite": "blue",
-          "text": "I stopped rehearsal before either group got hurt. We need a route people can trust. Visit Mira inside the coral-roofed cartography house.",
-          "gift": ""
-        },
-        {
-          "id": "varn",
-          "name": "Councilor Varn",
-          "x": 670,
-          "y": 280,
-          "kind": "npc",
-          "sprite": "blue",
-          "text": "I maintain the northern road. If you want a change, show how you will carry a crowd across that broken ford. The oldest route is not automatically the safest.",
+          "text": "I stopped rehearsal when the two processions split. The old banner points east, but the official atlas sends everyone north. Start with Mira Vale in the coral-roofed cartography house beyond the eastern gardens, then compare what she shows you with the banner here in the rehearsal meadow.",
           "gift": ""
         },
         {
           "id": "opening",
           "name": "Turn the plaza arrow",
-          "x": 580,
-          "y": 355,
+          "x": 1180,
+          "y": 585,
           "kind": "puzzle",
           "need": [
             "atlas",
@@ -58,8 +48,8 @@
         {
           "id": "route",
           "name": "Build the living route",
-          "x": 740,
-          "y": 350,
+          "x": 1360,
+          "y": 585,
           "kind": "puzzle",
           "need": [
             "ferry",
@@ -72,8 +62,8 @@
         {
           "id": "rest_town",
           "name": "Rest & refill vitality",
-          "x": 220,
-          "y": 360,
+          "x": 900,
+          "y": 720,
           "kind": "rest",
           "text": "You rest, refill your sun pips, and record your progress."
         }
@@ -81,8 +71,8 @@
       "exits": [
         {
           "to": "cartography",
-          "x": 480,
-          "y": 154,
+          "x": 1930,
+          "y": 309,
           "spawn": [
             480,
             444
@@ -91,8 +81,8 @@
         },
         {
           "to": "hall",
-          "x": 220,
-          "y": 176,
+          "x": 430,
+          "y": 304,
           "spawn": [
             480,
             444
@@ -101,8 +91,8 @@
         },
         {
           "to": "forest",
-          "x": 895,
-          "y": 270,
+          "x": 2280,
+          "y": 540,
           "spawn": [
             70,
             294
@@ -114,8 +104,8 @@
         },
         {
           "to": "river",
-          "x": 480,
-          "y": 480,
+          "x": 1200,
+          "y": 1040,
           "spawn": [
             90,
             304
@@ -127,8 +117,8 @@
         },
         {
           "to": "mountain",
-          "x": 740,
-          "y": 95,
+          "x": 1200,
+          "y": 72,
           "spawn": [
             90,
             304
@@ -179,8 +169,8 @@
           "x": 480,
           "y": 420,
           "spawn": [
-            480,
-            178
+            1930,
+            342
           ],
           "need": []
         }
@@ -188,10 +178,21 @@
       "hazards": []
     },
     "hall": {
-      "name": "Finch Hall & Civic Archive",
+      "name": "Brightwater Council Hall & Civic Archive",
       "theme": "interior",
       "description": "A public record can preserve a mistake as carefully as a truth.",
       "objects": [
+        {
+          "id": "varn",
+          "name": "Councilor Varn",
+          "x": 585,
+          "y": 300,
+          "kind": "npc",
+          "sprite": "blue",
+          "text": "The council is meeting because neither procession will yield. I maintain the northern road, and I will not send a festival crowd across a broken ford merely because an older banner points east. Bring me evidence for a route that respects history and keeps people safe.",
+          "gift": "",
+          "need": []
+        },
         {
           "id": "signs",
           "name": "Sign painter’s receipt",
@@ -253,8 +254,8 @@
           "x": 480,
           "y": 420,
           "spawn": [
-            220,
-            200
+            430,
+            338
           ],
           "need": []
         }
@@ -325,8 +326,8 @@
           "x": 70,
           "y": 270,
           "spawn": [
-            895,
-            294
+            2240,
+            540
           ],
           "need": []
         },
@@ -521,8 +522,8 @@
           "x": 90,
           "y": 280,
           "spawn": [
-            480,
-            504
+            1200,
+            1004
           ],
           "need": []
         },
@@ -1438,8 +1439,8 @@
           "x": 90,
           "y": 280,
           "spawn": [
-            740,
-            119
+            1200,
+            108
           ],
           "need": []
         },
@@ -1553,7 +1554,7 @@
       "text": "A rising sun and two stitched oaks flank the eastern gate. The cloth is dated 1907.",
       "source": "Festival guild textile",
       "date": "1907",
-      "location": "Brightwater · Festival Square",
+      "location": "Brightwater · Rehearsal Meadow",
       "limitation": "A ceremonial image suggests landmarks, but is not a survey."
     },
     "atlas": {
@@ -1673,7 +1674,7 @@
       "text": "Remove temporary from the northern road signs; repaint the destination as warehouse road.",
       "source": "Civic sign painter",
       "date": "1914",
-      "location": "Finch Hall & Civic Archive",
+      "location": "Brightwater Council Hall & Civic Archive",
       "limitation": "Records an instruction; does not explain every resident’s belief."
     },
     "programs": {
@@ -1681,7 +1682,7 @@
       "text": "1908: emergency detour. 1912: northern route. 1916: traditional northern road. Repetition slowly replaced qualification.",
       "source": "Festival committee",
       "date": "1908–1916",
-      "location": "Finch Hall & Civic Archive",
+      "location": "Brightwater Council Hall & Civic Archive",
       "limitation": "Programs show public language, not private motives."
     },
     "charter": {
@@ -1689,7 +1690,7 @@
       "text": "The Varn family inherited upkeep of the northern road after its adoption. The charter does not establish involvement in the 1908 decision.",
       "source": "Civic charter",
       "date": "Later civic period",
-      "location": "Finch Hall & Civic Archive",
+      "location": "Brightwater Council Hall & Civic Archive",
       "limitation": "Inherited responsibility is not proof of originating the deception."
     },
     "accord": {

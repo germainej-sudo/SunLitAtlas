@@ -4,6 +4,10 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 b=json.loads((R/'data/world.json').read_text());layouts=json.loads((R/'data/layout.json').read_text())
 flags=set();visited={'town'}
+assert layouts['town']['size']==[2400,1080],layouts['town']['size']
+assert layouts['town']['size'][0]*layouts['town']['size'][1]==5*960*540
+assert not any(o['id']=='varn' for o in b['rooms']['town']['objects'])
+assert any(o['id']=='varn' for o in b['rooms']['hall']['objects'])
 for iteration in range(100):
  before=(len(flags),len(visited))
  for id in list(visited):
@@ -32,9 +36,11 @@ for id,p in b['puzzles'].items():
 # A 6-pixel body must navigate from every authored entrance to each interaction.
 for id,r in b['rooms'].items():
  boxes=layouts[id]['collision']
+ width,height=layouts[id].get('size',[960,540])
  def free(x,y):
-  return 24<=x<=936 and 65<=y<=514 and not any(bx-7<x<bx+bw+7 and by-7<y<by+bh+7 for bx,by,bw,bh in boxes)
- start=(450//8,350//8);seen={start};queue=collections.deque([start])
+  return 24<=x<=width-24 and 65<=y<=height-26 and not any(bx-7<x<bx+bw+7 and by-7<y<by+bh+7 for bx,by,bw,bh in boxes)
+ origin=(920,650) if id=='town' else (450,350)
+ start=(origin[0]//8,origin[1]//8);seen={start};queue=collections.deque([start])
  while queue:
   x,y=queue.popleft()
   for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:

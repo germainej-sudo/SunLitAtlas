@@ -27,4 +27,4 @@ These checks do not prove the game is flawless, satisfy the unimplemented produc
 
 ## Final result
 
-174 integration checks passed with zero failures. The geometry audit, fresh ZIP import, resource-pack export, and packed startup passed. Final engine logs contained no warnings or errors. Title-screen control changes were explicitly checked not to overwrite a journey.
+177 integration checks passed with zero failures. The geometry audit, fresh ZIP import, resource-pack export, and packed startup passed. Final engine logs contained no warnings or errors. Camera following, expanded Brightwater limits, full-area player movement, and title-screen save isolation were explicitly checked.
