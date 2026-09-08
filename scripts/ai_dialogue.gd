@@ -12,13 +12,20 @@ func _ready() -> void:
 	request.timeout = 15
 	add_child(request)
 	request.request_completed.connect(_completed)
-	key = OS.get_environment("GEMINI_API_KEY")
+	# Do not load credentials into the student browser test.
+	if not OS.has_feature("student_test"):
+		key = OS.get_environment("GEMINI_API_KEY")
 
 func cancel() -> void:
 	request.cancel_request()
 	busy = false
 
 func ask(character: String, question: String, known: Array) -> void:
+	# Enforce this at the request boundary, even if a key is entered in settings.
+	if OS.has_feature("student_test"):
+		key = ""
+		reply.emit("Student test: online AI is disabled. " + fallback)
+		return
 	if busy: return
 	if key.is_empty():
 		reply.emit("Offline: "+fallback)
