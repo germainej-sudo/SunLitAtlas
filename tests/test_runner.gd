@@ -32,6 +32,9 @@ func run() -> void:
 	State.bindings.compass=KEY_C;State.configure_input();State.save_enabled=false
 	game.journey_active=true;game.mode="menu";game.close_overlay()
 	check(game.player.enabled,"Exploration enabled after leaving title")
+	check(game.camera.get_parent()==game.player,"Camera follows Liora")
+	check(game.camera.limit_right==2400 and game.camera.limit_bottom==1080,"Brightwater camera uses the expanded world limits")
+	check(game.player.movement_bounds.end==Vector2(2376,1054),"Player can traverse the full expanded Brightwater area")
 	check(not State.solve("synthesis",[1,1,1]),"Final gate rejects unearned evidence")
 	check(not State.solve("opening",[1]),"Opening rejects missing evidence")
 	game.show_journal()

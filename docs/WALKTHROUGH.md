@@ -6,7 +6,7 @@ Follow the current-purpose banner. E operates every marked door and object. A co
 
 ## Turn the plaza arrow
 
-Location: Brightwater · Festival Square
+Location: Brightwater · Festival District
 
 The foundation socket is older than the rotated arrow. Align the arrow with the old socket; compare the two procession sources first.
 
@@ -70,7 +70,7 @@ Settings: Public right = Coastkeeper Accord; Pressure on clerks = Missing ledger
 
 ## Ring the civic timeline
 
-Location: Finch Hall & Civic Archive
+Location: Brightwater Council Hall & Civic Archive
 
 Ring the four dated plates in sequence. The records trace change through emergency, copying, promotion, then removal of qualifying language. Varn inherited road maintenance; these records do not make him the original author.
 
@@ -110,7 +110,7 @@ Settings: Path = Raised walkway; Access = Public; Storms = Close when unsafe.
 
 ## Build the living route
 
-Location: Brightwater · Festival Square
+Location: Brightwater · Festival District
 
 Mira’s route board must honor the evidence and today’s conditions. The ford is unsafe. Keep the eastern line, use the tested ferry, pass the authenticated ruins, and reach public shore.
 
@@ -142,6 +142,6 @@ Settings: Reeds = 1; Ferry = 2; Lantern = Long.
 
 ## Required return route
 
-After the coast case, return to Finch Hall. Gather all three civic records and complete the civic timeline. Revisit Silverrun for the ferry test, Sunleaf for habitat protection, the ruins for markers, and the coast for the walkway. Assemble the route board in Brightwater, ascend the north road, collect the mantle, rescue the council, and present the summit case. Acknowledge worksheet six before lighting the living line.
+After the coast case, return to Brightwater Council Hall. Gather all three civic records and complete the civic timeline. Revisit Silverrun for the ferry test, Sunleaf for habitat protection, the ruins for markers, and the coast for the walkway. Assemble the route board in Brightwater, ascend the north road, collect the mantle, rescue the council, and present the summit case. Acknowledge worksheet six before lighting the living line.
 
 Optional hub travel is available in the map after sluice and beacon restoration. It travels only to previously visited locations.

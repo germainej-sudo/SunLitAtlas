@@ -1,9 +1,11 @@
 Godot 4.7.2.stable.official.ed1daf0bf
-Final verification: 2026-09-07
+Final verification: 2026-09-08
 
 Fresh ZIP extraction + editor import: PASS
-Full-arc integration suite: 174 checks, 0 failures
+Full-arc integration suite: 177 checks, 0 failures
 Dependency + geometry audit: PASS, all 20 sectors and all interactions reachable
+Brightwater world bounds: PASS, 2400x1080 and exactly five times the original area
+Camera follow and room-aware movement limits: PASS
 Windows-preset resource-pack export: PASS
 Standalone resource-pack startup smoke test: PASS
 Final engine test logs: no SCRIPT ERROR, ERROR, or WARNING entries

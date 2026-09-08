@@ -5,6 +5,7 @@ const AI = preload("res://scripts/ai_dialogue.gd")
 const GOLD = Color("f6d477")
 const CREAM = Color("f8edce")
 const TEAL = Color("103d43")
+const TOWN_START = Vector2(920,650)
 var world: Node2D
 var player: CharacterBody2D
 var camera: Camera2D
@@ -47,13 +48,13 @@ func _ready() -> void:
 	
 	make_ui()
 	State.saved.connect(func(ok: bool) -> void: toast("Journey saved" if ok else "Save failed — check your disk space"))
-	load_room("town",Vector2(450,350),false)
+	load_room("town",TOWN_START,false)
 	show_title()
 	if "--smoke" in OS.get_cmdline_user_args():
 		State.save_enabled = false
 		State.new_journey(3)
 		journey_active=true
-		load_room("town",Vector2(450,350),false)
+		load_room("town",TOWN_START,false)
 		mode="menu"
 		close_overlay()
 	if "--capture" in OS.get_cmdline_user_args():
@@ -158,7 +159,7 @@ func confirm_new(slot: int) -> void:
 func begin(slot: int) -> void:
 	journey_active=true
 	State.new_journey(slot);load_room("town",State.player_pos)
-	modal("The two processions","Prologue · Festival Square")
+	modal("The two processions","Prologue · Brightwater Festival District")
 	content.add_child(label("A drumbeat falters. One banner turns east toward the garden gate; the official procession turns north. Aster raises both hands.\n\n‘No one marches until we can explain the route.’\n\nMira beckons from the cartography house. ‘Start with what the map says about itself.’",14))
 	content.add_child(label("Move: WASD / arrows    Speak & inspect: E\nJournal: J    Map: M    Compass: C    Pause: Esc\nStaff: Space after Orin’s gift    Dodge: Q    Run: Shift",12,GOLD))
 	button("Step into Brightwater",close_overlay)
@@ -181,6 +182,8 @@ func load_room(id: String, spawn: Vector2, persist: bool = true) -> void:
 	var room: Dictionary=State.book.rooms[id]
 	var layout: Dictionary=State.layouts[id]
 	var bg:=Sprite2D.new();bg.texture=load("res://assets/"+id+".png");bg.centered=false;bg.z_index=-2;world.add_child(bg)
+	var size_data: Array=layout.get("size",[bg.texture.get_width(),bg.texture.get_height()])
+	var room_size:=Vector2(float(size_data[0]),float(size_data[1]))
 	for decor in layout.decor:
 		var s:=Sprite2D.new();s.texture=load("res://assets/"+decor.asset+".png")
 		s.position=Vector2(decor.x,decor.y)-Vector2(0,s.texture.get_height()/2.0)
@@ -188,11 +191,15 @@ func load_room(id: String, spawn: Vector2, persist: bool = true) -> void:
 	for box in layout.collision:
 		var body:=StaticBody2D.new();var shape:=CollisionShape2D.new();var rect:=RectangleShape2D.new()
 		rect.size=Vector2(box[2],box[3]);shape.shape=rect;body.position=Vector2(box[0]+box[2]/2.0,box[1]+box[3]/2.0);body.add_child(shape);world.add_child(body)
-	player=PLAYER.new();world.add_child(player);player.position=spawn
+	player=PLAYER.new();world.add_child(player)
+	player.movement_bounds=Rect2(Vector2(24,65),room_size-Vector2(48,91))
+	player.position=Vector2(
+		clampf(spawn.x,player.movement_bounds.position.x,player.movement_bounds.end.x),
+		clampf(spawn.y,player.movement_bounds.position.y,player.movement_bounds.end.y))
 	# Imported/corrupt-position recovery never puts the player inside a collider.
 	for box in layout.collision:
-		if Rect2(box[0]-7,box[1]-7,box[2]+14,box[3]+14).has_point(player.position): player.position=Vector2(450,350)
-	camera=Camera2D.new();camera.position=Vector2.ZERO;camera.zoom=Vector2(2.0/3.0,2.0/3.0);camera.limit_left=0;camera.limit_top=0;camera.limit_right=960;camera.limit_bottom=540;player.add_child(camera)
+		if Rect2(box[0]-7,box[1]-7,box[2]+14,box[3]+14).has_point(player.position): player.position=default_spawn(id)
+	camera=Camera2D.new();camera.position=Vector2.ZERO;camera.zoom=Vector2(2.0/3.0,2.0/3.0);camera.limit_left=0;camera.limit_top=0;camera.limit_right=int(room_size.x);camera.limit_bottom=int(room_size.y);player.add_child(camera)
 	camera.position_smoothing_enabled=State.settings.motion
 	camera.position_smoothing_speed=8
 	camera.make_current();camera.reset_smoothing()
@@ -203,9 +210,10 @@ func load_room(id: String, spawn: Vector2, persist: bool = true) -> void:
 	for e in room.exits:
 		var sign:=Label.new();sign.text="↗";sign.position=Vector2(e.x-8,e.y-24);sign.z_index=1000;sign.add_theme_font_size_override("font_size",20);sign.add_theme_color_override("font_color",Color("fff0b0"));world.add_child(sign)
 	if id=="town":
-		for i in range(9):
+		var crowd_homes: Array=[Vector2(560,710),Vector2(630,790),Vector2(790,700),Vector2(830,805),Vector2(1030,460),Vector2(1280,450),Vector2(1450,690),Vector2(1690,710),Vector2(1780,865),Vector2(1980,720),Vector2(350,380),Vector2(520,390)]
+		for i in range(crowd_homes.size()):
 			var s:=Sprite2D.new();s.texture=load("res://assets/"+["red","green","purple","blue"][i%4]+".png");s.hframes=4;s.vframes=4
-			s.position=Vector2(320+(i%5)*78,230+(i/5)*140);s.z_index=int(s.position.y+14);world.add_child(s)
+			s.position=crowd_homes[i];s.z_index=int(s.position.y+14);world.add_child(s)
 			crowd.append({"sprite":s,"home":s.position,"phase":i})
 	for h in room.hazards:
 		var copy: Dictionary=h.duplicate();copy["stun"]=0.0;hazards.append(copy)
@@ -243,7 +251,7 @@ func _process(delta: float) -> void:
 		m.label.modulate.a=.8+.2*sin(t*2) if State.settings.motion else 1.0
 	for c in crowd:
 		if State.settings.motion and mode=="explore":
-			c.sprite.position=c.home+Vector2(sin(t*.25+c.phase)*10,cos(t*.2+c.phase)*6)
+			c.sprite.position=c.home+Vector2(sin(t*.25+c.phase)*18,cos(t*.2+c.phase)*12)
 			c.sprite.frame=int(t*3+c.phase)%4;c.sprite.z_index=int(c.sprite.position.y+14)
 	for actor in actors:
 		actor.sprite.frame=(int(t*1.5)%2 if State.settings.motion else 0)
@@ -432,7 +440,7 @@ func show_map() -> void:
 	for id in State.visited:
 		var text: String=("◆ " if id==State.room_id else "○ ")+State.book.rooms[id].name
 		if State.has("beacon") and State.has("sluice"):
-			button(text+" · travel",func() -> void: load_room(id,Vector2(450,350));mode="menu";close_overlay())
+			button(text+" · travel",func() -> void: load_room(id,default_spawn(id));mode="menu";close_overlay())
 		else: content.add_child(label(text))
 	content.add_child(label("Known hub travel unlocks after the sluice and lighthouse are restored. Walking routes remain available.",11,Color("afd3bd")))
 
@@ -550,6 +558,9 @@ func _draw() -> void:
 func toast(text: String) -> void:
 	if not is_instance_valid(notice):return
 	notice.text=text;toast_time=4.5
+
+func default_spawn(id: String) -> Vector2:
+	return TOWN_START if id=="town" else Vector2(450,350)
 
 func _exit_tree() -> void:
 	if is_instance_valid(music):

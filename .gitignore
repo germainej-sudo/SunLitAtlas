@@ -4,3 +4,5 @@ builds/
 *.tmp
 *.log
 .env
+__pycache__/
+*.py[cod]
