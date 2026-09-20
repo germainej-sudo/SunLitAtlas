@@ -102,7 +102,8 @@ func make_ui() -> void:
 	vitality_label=label("● ● ● ● ●",12,GOLD);vitality_label.custom_minimum_size.x=80;row.add_child(vitality_label)
 	prompt=label("",12);prompt.position=Vector2(125,327);prompt.size=Vector2(390,26);prompt.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 	prompt.add_theme_stylebox_override("normal",style(TEAL));ui.add_child(prompt)
-	notice=label("",11,GOLD);notice.position=Vector2(14,49);notice.size=Vector2(610,28);ui.add_child(notice)
+	notice=label("",11,GOLD);notice.position=Vector2(14,49);notice.size=Vector2(610,28)
+	notice.add_theme_stylebox_override("normal",style(TEAL));ui.add_child(notice)
 	var shortcuts:=HBoxContainer.new();shortcuts.position=Vector2(468,304);ui.add_child(shortcuts)
 	button("Journal",show_journal,shortcuts);button("Map",show_map,shortcuts)
 

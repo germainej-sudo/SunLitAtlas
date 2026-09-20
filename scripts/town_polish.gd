@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		return
 	var room := str(State.room_id)
 	var scene_id := scene.get_instance_id()
-	if room != active_room or scene_id != active_scene_id:
+	if room != active_room or scene_id != active_scene_id or _additions_stale():
 		_clear_room_additions()
 		active_room = room
 		active_scene_id = scene_id
@@ -79,6 +79,17 @@ func _build_room(scene: Node) -> void:
 		_add_extra_decor(scene)
 		_bind_town_crowd(scene)
 	_build_role_label(scene)
+
+func _additions_stale() -> bool:
+	# main.gd rebuilds `world` in place, so a re-entry into the same room frees
+	# every node we spawned or bound without changing room id or scene id.
+	for node in spawned:
+		if not is_instance_valid(node):
+			return true
+	for item in bound_crowd:
+		if not is_instance_valid(item.sprite):
+			return true
+	return false
 
 func _clear_room_additions() -> void:
 	for node in spawned:
@@ -122,22 +133,23 @@ func _bind_town_crowd(scene: Node) -> void:
 			best.position = profile.home
 			bound_crowd.append({"sprite": best, "profile": profile})
 
-func _colored_sprites(root: Node) -> Array:
-	var found: Array = []
+func _colored_sprites(root: Node) -> Array[Sprite2D]:
+	var found: Array[Sprite2D] = []
 	for child in root.get_children():
-		if child is Sprite2D and child.texture != null:
-			var path := child.texture.resource_path
+		var sprite := child as Sprite2D
+		if sprite != null and sprite.texture != null:
+			var path := sprite.texture.resource_path
 			if path.ends_with("/red.png") or path.ends_with("/green.png") or path.ends_with("/purple.png") or path.ends_with("/blue.png"):
-				found.append(child)
+				found.append(sprite)
 		found.append_array(_colored_sprites(child))
 	return found
 
 func _update_town_crowd() -> void:
 	var motion_on := bool(State.settings.get("motion", true))
 	for item in bound_crowd:
-		var sprite: Sprite2D = item.sprite
-		if not is_instance_valid(sprite):
+		if not is_instance_valid(item.sprite):
 			continue
+		var sprite: Sprite2D = item.sprite
 		var profile: Dictionary = item.profile
 		var home: Vector2 = profile.home
 		if not motion_on:
