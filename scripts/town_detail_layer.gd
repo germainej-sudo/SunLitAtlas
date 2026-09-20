@@ -38,7 +38,7 @@ func _draw() -> void:
 			draw_rect(Rect2(p, Vector2(1, 3)), shade)
 			draw_rect(Rect2(p + Vector2(1, 1), Vector2(1, 2)), shade.darkened(0.08))
 			if i % 7 == 0:
-				var bloom := [FLOWER_WHITE, FLOWER_GOLD, FLOWER_CORAL][i % 3]
+				var bloom: Color = [FLOWER_WHITE, FLOWER_GOLD, FLOWER_CORAL][i % 3]
 				draw_rect(Rect2(p + Vector2(-1, -1), Vector2(1, 1)), bloom)
 				draw_rect(Rect2(p + Vector2(1, -1), Vector2(1, 1)), bloom)
 				draw_rect(Rect2(p + Vector2(0, -2), Vector2(1, 1)), bloom)

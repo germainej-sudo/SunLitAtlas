@@ -18,6 +18,7 @@ func click_text(node: Node, prefix: String) -> bool:
 	return false
 
 func run() -> void:
+	check(get_node_or_null("/root/TownPolish") != null, "TownPolish autoload loaded")
 	get_tree().create_timer(45).timeout.connect(func() -> void: printerr("FAIL: test timeout");get_tree().quit(1))
 	State.save_enabled=false;State.new_journey(3);State.settings.gentle=true
 	game=load("res://scenes/main.tscn").instantiate();add_child(game)
